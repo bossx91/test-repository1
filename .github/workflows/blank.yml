@@ -42,3 +42,6 @@ jobs:
       - name: Create a file
         run: |
           echo $(date) >> my_keptfile.txt
+
+      - name: Read my saved workspace
+        run: cat my_keptfile.txt || true
