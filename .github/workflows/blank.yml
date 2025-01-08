@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest;snapshot.key=my_snapshot
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -45,3 +45,10 @@ jobs:
 
       - name: Read my saved workspace
         run: cat my_keptfile.txt || true
+
+      - name: Create snapshot
+        uses: WarpBuilds/snapshot-save@v1
+        with:
+          alias: 'my_snapshot'
+          fail-on-error: true
+          wait-timeout-minutes: 60
